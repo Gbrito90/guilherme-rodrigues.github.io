@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guilherme Rodrigues — UX Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0E0E0E;
+      --surface: #161616;
+      --card: #1E1E1E;
+      --border: #2A2A2A;
+      --text: #F0F0F0;
+      --muted: #888;
+      --accent: #C8F56A;
+      --accent2: #7C6FF7;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 60px;
+      background: rgba(14,14,14,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .logo { font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; color: var(--white); letter-spacing: -0.5px; }
+    nav ul { list-style: none; display: flex; gap: 32px; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--text); }
+    nav .cta-nav {
+      background: var(--accent); color: #0E0E0E; padding: 8px 20px;
+      border-radius: 100px; font-weight: 600; font-size: 13px;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    nav .cta-nav:hover { opacity: 0.85; }
+
+    /* SECTIONS */
+    section { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
+
+    /* HERO */
+    #hero {
+      padding-top: 160px;
+      padding-bottom: 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 100px; padding: 6px 14px;
+      font-size: 12px; color: var(--muted); margin-bottom: 24px;
+    }
+    .hero-tag .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; }
+    #hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(38px, 4.5vw, 58px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--white);
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+    #hero h1 em { font-style: italic; color: var(--accent); }
+    #hero p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: #0E0E0E;
+      padding: 13px 28px; border-radius: 100px;
+      font-weight: 600; font-size: 14px; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-outline {
+      border: 1px solid var(--border); color: var(--text);
+      padding: 13px 28px; border-radius: 100px;
+      font-weight: 500; font-size: 14px; text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--muted); }
+    .hero-visual {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .hero-card-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .hero-stat { font-family: 'Fraunces', serif; font-size: 42px; font-weight: 600; color: var(--white); line-height: 1; }
+    .hero-stat span { color: var(--accent); }
+    .hero-divider { height: 1px; background: var(--border); }
+    .hero-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .tool-pill {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 100px; padding: 5px 12px;
+      font-size: 12px; color: var(--muted);
+    }
+
+    /* SOBRE */
+    #sobre { border-top: 1px solid var(--border); }
+    .section-tag { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; font-weight: 600; }
+    #sobre h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -0.8px;
+      margin-bottom: 24px;
+      max-width: 600px;
+      line-height: 1.3;
+    }
+    #sobre p { color: var(--muted); font-size: 17px; line-height: 1.8; max-width: 620px; margin-bottom: 16px; }
+    #sobre p strong { color: var(--text); font-weight: 500; }
+    .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 60px; align-items: start; }
+    .sobre-text { }
+    .sobre-cards { display: flex; flex-direction: column; gap: 16px; }
+    .sobre-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+    }
+    .sobre-card h4 { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sobre-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; }
+
+    /* PROCESSO */
+    #processo { border-top: 1px solid var(--border); background: var(--surface); padding: 100px 0; }
+    #processo .inner { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+    #processo h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    #processo .subtitle { color: var(--muted); font-size: 17px; margin-bottom: 60px; max-width: 500px; }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .step {
+      background: var(--card); padding: 32px 28px;
+      position: relative;
+    }
+    .step-num { font-family: 'Fraunces', serif; font-size: 48px; font-weight: 300; color: var(--border); line-height: 1; margin-bottom: 16px; }
+    .step h3 { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+    .step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .step-tags { display: flex; flex-direction: column; gap: 5px; margin-top: 16px; }
+    .step-tag-item { font-size: 11px; color: var(--accent2); background: rgba(124,111,247,0.1); border-radius: 4px; padding: 3px 8px; width: fit-content; }
+
+    /* CASES */
+    #cases { border-top: 1px solid var(--border); }
+    #cases h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+    #cases .subtitle { color: var(--muted); font-size: 17px; margin-bottom: 60px; }
+    .case-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .case-header {
+      padding: 48px 48px 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+    }
+    .case-tag {
+      display: inline-flex; gap: 8px; align-items: center;
+      font-size: 11px; color: var(--accent); text-transform: uppercase;
+      letter-spacing: 1.5px; font-weight: 600; margin-bottom: 16px;
+    }
+    .case-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(24px, 2.5vw, 32px);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+    .case-card .case-desc { color: var(--muted); font-size: 15px; line-height: 1.7; max-width: 520px; }
+    .case-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .pill {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 100px; padding: 5px 14px;
+      font-size: 12px; color: var(--muted);
+    }
+    .case-meta { text-align: right; }
+    .case-meta-item { margin-bottom: 16px; }
+    .case-meta-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .case-meta-value { font-size: 13px; color: var(--text); font-weight: 500; }
+
+    .case-body { padding: 40px 48px 48px; }
+    .case-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+    .case-section h4 { font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 12px; }
+    .case-section p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .case-section ul { list-style: none; }
+    .case-section ul li { font-size: 14px; color: var(--muted); line-height: 1.7; padding-left: 16px; position: relative; }
+    .case-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; }
+
+    .process-flow {
+      background: var(--surface); border-radius: 12px;
+      padding: 24px 28px; margin-bottom: 28px;
+      display: flex; align-items: center; gap: 0;
+      overflow-x: auto;
+    }
+    .flow-step {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; flex: 1; min-width: 100px;
+    }
+    .flow-dot {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--card); border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 600; color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .flow-label { font-size: 11px; color: var(--muted); font-weight: 500; }
+    .flow-arrow { color: var(--border); font-size: 18px; padding: 0 8px; flex-shrink: 0; margin-bottom: 20px; }
+
+    .insight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+    .insight-card {
+      background: var(--surface); border-radius: 12px; padding: 20px;
+      border-left: 3px solid var(--accent);
+    }
+    .insight-card .insight-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+    .insight-card .insight-label { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    .case-cta {
+      display: flex; justify-content: flex-end; padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .case-cta a {
+      color: var(--accent); font-size: 14px; font-weight: 600;
+      text-decoration: none; display: flex; align-items: center; gap: 6px;
+      transition: gap 0.2s;
+    }
+    .case-cta a:hover { gap: 10px; }
+
+    /* HABILIDADES */
+    #habilidades { border-top: 1px solid var(--border); }
+    #habilidades h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+    #habilidades .subtitle { color: var(--muted); font-size: 17px; margin-bottom: 60px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .skill-group {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px;
+    }
+    .skill-group-title { font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 20px; }
+    .skill-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .skill-item:last-child { margin-bottom: 0; }
+    .skill-name { font-size: 14px; color: var(--text); }
+    .skill-bar-wrap { width: 80px; height: 4px; background: var(--border); border-radius: 2px; }
+    .skill-bar { height: 4px; background: var(--accent); border-radius: 2px; }
+
+    /* CONTATO */
+    #contato { border-top: 1px solid var(--border); text-align: center; }
+    #contato h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    #contato h2 em { font-style: italic; color: var(--accent); }
+    #contato p { color: var(--muted); font-size: 17px; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .contact-link {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 100px; padding: 12px 24px;
+      color: var(--text); text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      transition: border-color 0.2s, color 0.2s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-link.primary { background: var(--accent); color: #0E0E0E; border-color: var(--accent); font-weight: 600; }
+    .contact-link.primary:hover { opacity: 0.85; color: #0E0E0E; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--muted); font-size: 13px;
+      max-width: 100%;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+
+    /* ── UI MOCKUP STYLES ── */
+    .browser-mockup {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+    }
+    .browser-bar {
+      background: var(--surface); padding: 10px 16px;
+      display: flex; align-items: center; gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .browser-dots { display: flex; gap: 6px; }
+    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .browser-dot.r { background: #FF5F57; }
+    .browser-dot.y { background: #FFBD2E; }
+    .browser-dot.g { background: #28C840; }
+    .browser-url {
+      flex: 1; background: var(--card); border-radius: 6px;
+      padding: 4px 12px; font-size: 11px; color: var(--muted);
+    }
+    .phone-mockup {
+      background: #111; border: 2px solid #2A2A2A; border-radius: 28px;
+      overflow: hidden; width: 160px; flex-shrink: 0;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+    }
+    .phone-notch {
+      background: #0A0A0A; height: 24px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .phone-notch-bar { width: 50px; height: 5px; background: #1E1E1E; border-radius: 3px; }
+    .case-ui-preview {
+      margin: 0 0 28px; border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--surface);
+    }
+    .case-ui-bar {
+      background: var(--card); padding: 8px 14px;
+      display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .case-ui-bar span { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .ui-screens {
+      display: flex; overflow-x: auto; scrollbar-width: none;
+    }
+    .ui-screens::-webkit-scrollbar { display: none; }
+    .ui-screen-wrap {
+      flex-shrink: 0; border-right: 1px solid var(--border); padding: 20px;
+      display: flex; flex-direction: column; gap: 8px; min-width: 260px;
+    }
+    .ui-screen-wrap:last-child { border-right: none; }
+    .ui-screen-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      nav ul { display: none; }
+      section { padding: 80px 24px; }
+      #hero { grid-template-columns: 1fr; padding: 120px 24px 80px; }
+      .hero-visual { display: none; }
+      .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .case-header { grid-template-columns: 1fr; }
+      .case-meta { text-align: left; }
+      .case-sections { grid-template-columns: 1fr; }
+      .insight-grid { grid-template-columns: 1fr 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .case-body, .case-header { padding: 24px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Guilherme Rodrigues</div>
+  <ul>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#cases">Cases</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
+  </ul>
+  <a href="#contato" class="cta-nav">Falar comigo</a>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><span class="dot"></span> Disponível para novas oportunidades · São Paulo</div>
+    <h1>Design que parte<br>de quem <em>usa,</em><br>não de quem cria.</h1>
+    <p>Vim do recrutamento tech e aprendi na prática o que frustra pessoas em interfaces digitais. Hoje uso esse olhar para projetar produtos mais claros, mais humanos e mais diretos ao ponto.</p>
+    <div class="hero-actions">
+      <a href="#cases" class="btn-primary">Ver meus projetos</a>
+      <a href="https://www.linkedin.com/in/guilherme-brito-rodrigues/" target="_blank" class="btn-outline">LinkedIn →</a>
+    </div>
+  </div>
+  <div class="hero-preview" style="position:relative;">
+    <div class="browser-mockup">
+      <div class="browser-bar">
+        <div class="browser-dots">
+          <div class="browser-dot r"></div>
+          <div class="browser-dot y"></div>
+          <div class="browser-dot g"></div>
+        </div>
+        <div class="browser-url">guilherme.design/aster</div>
+      </div>
+      <!-- Aster UI Preview -->
+      <svg width="100%" viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+        <rect width="480" height="300" fill="#0D0B14"/>
+        <!-- Nav -->
+        <rect width="480" height="44" fill="#13101D"/>
+        <text x="20" y="27" font-family="Georgia,serif" font-size="13" fill="#C8A8F0" font-weight="600">Aster</text>
+        <text x="120" y="27" font-family="Arial" font-size="10" fill="#888">Jornadas</text>
+        <text x="190" y="27" font-family="Arial" font-size="10" fill="#888">Espaços</text>
+        <text x="260" y="27" font-family="Arial" font-size="10" fill="#888">Histórias</text>
+        <rect x="360" y="14" width="100" height="22" rx="11" fill="#7C3FC8"/>
+        <text x="410" y="27" font-family="Arial" font-size="10" fill="#FFF" text-anchor="middle">Começar →</text>
+        <!-- Hero bg gradient -->
+        <defs>
+          <linearGradient id="asterBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1A1030"/>
+            <stop offset="100%" stop-color="#0D0B14"/>
+          </linearGradient>
+          <linearGradient id="purpleGlow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7C3FC8" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#7C3FC8" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect y="44" width="480" height="256" fill="url(#asterBg)"/>
+        <!-- Glow blob -->
+        <ellipse cx="240" cy="160" rx="160" ry="100" fill="url(#purpleGlow)"/>
+        <!-- Headline -->
+        <text x="240" y="105" font-family="Georgia,serif" font-size="22" fill="#EDE6FF" text-anchor="middle" font-weight="300">Conecte-se com o que</text>
+        <text x="240" y="130" font-family="Georgia,serif" font-size="22" fill="#C8A8F0" text-anchor="middle" font-style="italic">é essencial</text>
+        <!-- Subtitle -->
+        <text x="240" y="158" font-family="Arial" font-size="11" fill="#888" text-anchor="middle">Comunidade de desenvolvimento feminino · Online e presencial</text>
+        <!-- CTA -->
+        <rect x="175" y="172" width="130" height="30" rx="15" fill="#7C3FC8"/>
+        <text x="240" y="191" font-family="Arial" font-size="11" fill="#FFF" text-anchor="middle" font-weight="600">Começar agora →</text>
+        <!-- Feature cards -->
+        <rect x="20" y="220" width="130" height="60" rx="8" fill="#1E1830" stroke="#3D2C6E" stroke-width="1"/>
+        <text x="35" y="242" font-family="Arial" font-size="8" fill="#C8A8F0" font-weight="700">AUTOCONHECIMENTO</text>
+        <text x="35" y="256" font-family="Arial" font-size="9" fill="#888">Workshops e retiros</text>
+        <text x="35" y="268" font-family="Arial" font-size="9" fill="#888">presenciais</text>
+        <rect x="170" y="220" width="130" height="60" rx="8" fill="#1E1830" stroke="#3D2C6E" stroke-width="1"/>
+        <text x="185" y="242" font-family="Arial" font-size="8" fill="#C8A8F0" font-weight="700">COMUNIDADE</text>
+        <text x="185" y="256" font-family="Arial" font-size="9" fill="#888">Rede de profissionais</text>
+        <text x="185" y="268" font-family="Arial" font-size="9" fill="#888">e mentoras</text>
+        <rect x="320" y="220" width="140" height="60" rx="8" fill="#1E1830" stroke="#3D2C6E" stroke-width="1"/>
+        <text x="335" y="242" font-family="Arial" font-size="8" fill="#C8A8F0" font-weight="700">RENDA</text>
+        <text x="335" y="256" font-family="Arial" font-size="9" fill="#888">Psicólogas, nutricionistas</text>
+        <text x="335" y="268" font-family="Arial" font-size="9" fill="#888">e coaches</text>
+      </svg>
+    </div>
+    <!-- Floating stat card -->
+    <div style="position:absolute;bottom:-18px;left:-16px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;box-shadow:0 8px 32px rgba(0,0,0,0.4);z-index:2;">
+      <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">4 projetos</div>
+      <div style="font-size:20px;font-weight:700;color:var(--accent);font-family:'Fraunces',serif;">UX → UI</div>
+    </div>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-grid">
+    <div class="sobre-text">
+      <div class="section-tag">Sobre mim</div>
+      <h2>Um recruiter que aprendeu a ouvir o usuário antes de ouvir o sistema.</h2>
+      <p>Durante anos como Tech Recruiter, percebi que muitos candidatos desistiam de processos seletivos não por falta de interesse — mas porque as plataformas eram confusas, frias e mal estruturadas. A experiência do candidato era ignorada.</p>
+      <p>Isso me levou ao UX. Comecei a estudar design com um problema real na cabeça: <strong>como criar interfaces que respeitem o tempo e a emoção de quem está do outro lado?</strong></p>
+      <p>Hoje aplico pesquisa, empatia e processo para projetar soluções que fazem sentido para o usuário antes de fazer sentido para o negócio. Porque quando o usuário consegue, o negócio cresce junto.</p>
+    </div>
+    <div class="sobre-cards">
+      <div class="sobre-card">
+        <h4>Origem</h4>
+        <p>Tech Recruiter → UX Designer. Trago com eu o entendimento de como pessoas interagem com produtos digitais sob pressão e incerteza.</p>
+      </div>
+      <div class="sobre-card">
+        <h4>Formação</h4>
+        <p>Projetos acadêmicos com metodologia de mercado: Double Diamond, pesquisa com usuários reais, benchmarking competitivo e prototipação no Figma.</p>
+      </div>
+      <div class="sobre-card">
+        <h4>Abordagem</h4>
+        <p>Prefiro entender o problema antes de desenhar a solução. Pesquisa não é etapa opcional — é a base de qualquer decisão de design que valha a pena.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<div id="processo">
+  <div class="inner">
+    <div class="section-tag">Método de trabalho</div>
+    <h2>Do problema real à entrega com propósito.</h2>
+    <p class="subtitle">Uso o Double Diamond como estrutura, mas o processo é sempre adaptado à realidade do projeto — nada aqui é linear por obrigação.</p>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Descoberta</h3>
+        <p>Entender o contexto antes de qualquer solução. Pesquisa desk, análise de mercado e imersão no universo do usuário.</p>
+        <div class="step-tags">
+          <span class="step-tag-item">Desk Research</span>
+          <span class="step-tag-item">Análise de mercado</span>
+          <span class="step-tag-item">SWOT</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Definição</h3>
+        <p>Pesquisa com usuários reais para validar hipóteses. Entrevistas, formulários quantitativos e síntese de insights.</p>
+        <div class="step-tags">
+          <span class="step-tag-item">Entrevistas</span>
+          <span class="step-tag-item">Pesquisa quanti</span>
+          <span class="step-tag-item">Personas</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Desenvolvimento</h3>
+        <p>Benchmarking, ideação e prototipação. Do mapa de jornada aos wireframes de alta fidelidade no Figma.</p>
+        <div class="step-tags">
+          <span class="step-tag-item">Benchmarking</span>
+          <span class="step-tag-item">Wireframes</span>
+          <span class="step-tag-item">Prototipação</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Entrega</h3>
+        <p>Solução documentada e testada, com foco em clareza para o time de desenvolvimento e aprendizados registrados.</p>
+        <div class="step-tags">
+          <span class="step-tag-item">Handoff</span>
+          <span class="step-tag-item">Documentação</span>
+          <span class="step-tag-item">Iteração</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="section-tag">Projetos</div>
+  <h2>Cases de design com processo completo.</h2>
+  <p class="subtitle">Dois projetos do zero, com pesquisa, definição de problema, prototipação e entrega documentada.</p>
+
+  <!-- CASE 1: ASTER -->
+  <div class="case-card">
+    <div class="case-header">
+      <div>
+        <div class="case-tag">Projeto 01 · Comunidade & Bem-estar</div>
+        <h3>Aster — Portal de conexão e desenvolvimento feminino</h3>
+        <p class="case-desc">Uma comunidade que existia só no Instagram precisava virar um produto digital real. O desafio era manter o engajamento orgânico de uma rede social e transformá-lo em uma plataforma com monetização, sem perder a identidade e o calor da comunidade original.</p>
+        <div class="case-pills">
+          <span class="pill">Double Diamond</span>
+          <span class="pill">Pesquisa qualitativa</span>
+          <span class="pill">Benchmarking</span>
+          <span class="pill">Personas</span>
+          <span class="pill">SWOT</span>
+          <span class="pill">Figma</span>
+        </div>
+      </div>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <div class="case-meta-label">Tipo</div>
+          <div class="case-meta-value">Produto digital B2C</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Plataforma</div>
+          <div class="case-meta-value">Web responsivo</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Pesquisa</div>
+          <div class="case-meta-value">Entrevistas + Formulários</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-body">
+
+      <!-- ── UI ASTER ── -->
+      <div class="case-ui-preview">
+        <div class="case-ui-bar">
+          <div class="browser-dots"><div class="browser-dot r"></div><div class="browser-dot y"></div><div class="browser-dot g"></div></div>
+          <span>Telas do produto — Portal Aster</span>
+        </div>
+        <div class="ui-screens">
+          <div class="ui-screen-wrap">
+            <div class="ui-screen-label">Home — Hero</div>
+            <svg width="240" height="160" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" fill="#0D0B14"/>
+              <rect width="240" height="22" fill="#13101D"/>
+              <text x="10" y="15" font-family="Georgia,serif" font-size="8" fill="#C8A8F0" font-weight="600">Aster</text>
+              <text x="65" y="15" font-family="Arial" font-size="6" fill="#666">Jornadas</text><text x="105" y="15" font-family="Arial" font-size="6" fill="#666">Espaços</text>
+              <rect x="186" y="8" width="46" height="12" rx="6" fill="#7C3FC8"/><text x="209" y="16" font-family="Arial" font-size="6" fill="#FFF" text-anchor="middle">Começar</text>
+              <defs><radialGradient id="ag"><stop offset="0%" stop-color="#7C3FC8" stop-opacity="0.25"/><stop offset="100%" stop-color="#0D0B14" stop-opacity="0"/></radialGradient></defs>
+              <ellipse cx="120" cy="90" rx="100" ry="65" fill="url(#ag)"/>
+              <text x="120" y="60" font-family="Georgia,serif" font-size="13" fill="#EDE6FF" text-anchor="middle">Conecte-se com</text>
+              <text x="120" y="76" font-family="Georgia,serif" font-size="13" fill="#C8A8F0" text-anchor="middle" font-style="italic">o que é essencial</text>
+              <text x="120" y="92" font-family="Arial" font-size="6" fill="#666" text-anchor="middle">Comunidade feminina · online e presencial</text>
+              <rect x="80" y="100" width="80" height="16" rx="8" fill="#7C3FC8"/><text x="120" y="111" font-family="Arial" font-size="6" fill="#FFF" text-anchor="middle">Começar agora →</text>
+              <rect x="10" y="126" width="65" height="26" rx="4" fill="#1E1830" stroke="#3D2C6E" stroke-width="0.5"/>
+              <text x="42" y="137" font-family="Arial" font-size="5" fill="#C8A8F0" text-anchor="middle" font-weight="700">AUTOCONHECIMENTO</text>
+              <text x="42" y="147" font-family="Arial" font-size="5" fill="#555" text-anchor="middle">Workshops presenciais</text>
+              <rect x="87" y="126" width="65" height="26" rx="4" fill="#1E1830" stroke="#3D2C6E" stroke-width="0.5"/>
+              <text x="119" y="137" font-family="Arial" font-size="5" fill="#C8A8F0" text-anchor="middle" font-weight="700">COMUNIDADE</text>
+              <text x="119" y="147" font-family="Arial" font-size="5" fill="#555" text-anchor="middle">Rede de mentoras</text>
+              <rect x="164" y="126" width="65" height="26" rx="4" fill="#1E1830" stroke="#3D2C6E" stroke-width="0.5"/>
+              <text x="196" y="137" font-family="Arial" font-size="5" fill="#C8A8F0" text-anchor="middle" font-weight="700">RENDA</text>
+              <text x="196" y="147" font-family="Arial" font-size="5" fill="#555" text-anchor="middle">Profissionais autônomas</text>
+            </svg>
+          </div>
+          <div class="ui-screen-wrap">
+            <div class="ui-screen-label">Perfil — Profissional</div>
+            <svg width="240" height="160" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" fill="#0D0B14"/>
+              <rect width="240" height="22" fill="#13101D"/>
+              <text x="10" y="15" font-family="Georgia,serif" font-size="8" fill="#C8A8F0" font-weight="600">Aster</text>
+              <rect x="186" y="8" width="46" height="12" rx="6" fill="#7C3FC8"/><text x="209" y="16" font-family="Arial" font-size="6" fill="#FFF" text-anchor="middle">Agenda</text>
+              <rect x="8" y="28" width="90" height="124" rx="6" fill="#1A1530" stroke="#3D2C6E" stroke-width="0.5"/>
+              <circle cx="53" cy="56" r="18" fill="#7C3FC8" fill-opacity="0.25" stroke="#7C3FC8" stroke-width="0.8"/>
+              <text x="53" y="61" font-family="Arial" font-size="16" fill="#C8A8F0" text-anchor="middle">🌸</text>
+              <text x="53" y="84" font-family="Georgia,serif" font-size="8" fill="#EDE6FF" text-anchor="middle">Dra. Ana Lima</text>
+              <text x="53" y="95" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Psicóloga Clínica</text>
+              <rect x="18" y="104" width="70" height="14" rx="7" fill="#7C3FC8"/><text x="53" y="113" font-family="Arial" font-size="6" fill="#FFF" text-anchor="middle">Ver agenda →</text>
+              <rect x="18" y="124" width="32" height="10" rx="5" fill="#1E1830" stroke="#3D2C6E" stroke-width="0.5"/><text x="34" y="131" font-family="Arial" font-size="5" fill="#888" text-anchor="middle">⭐ 4.9</text>
+              <rect x="56" y="124" width="32" height="10" rx="5" fill="#1E1830" stroke="#3D2C6E" stroke-width="0.5"/><text x="72" y="131" font-family="Arial" font-size="5" fill="#888" text-anchor="middle">48 sess.</text>
+              <rect x="106" y="28" width="126" height="124" rx="6" fill="#13101D" stroke="#2A2A2A" stroke-width="0.5"/>
+              <text x="169" y="44" font-family="Arial" font-size="6" fill="#666" text-anchor="middle" font-weight="700" letter-spacing="1">AGENDA · JUNHO</text>
+              <rect x="114" y="52" width="110" height="18" rx="4" fill="#1E1830"/>
+              <text x="122" y="63" font-family="Arial" font-size="6" fill="#C8A8F0">Seg 10 · 10:00</text><text x="216" y="63" font-family="Arial" font-size="6" fill="#7C3FC8" text-anchor="end">Livre</text>
+              <rect x="114" y="74" width="110" height="18" rx="4" fill="#7C3FC8" fill-opacity="0.12"/>
+              <text x="122" y="85" font-family="Arial" font-size="6" fill="#EDE6FF">Seg 10 · 14:00</text><text x="216" y="85" font-family="Arial" font-size="6" fill="#555" text-anchor="end">Ocupado</text>
+              <rect x="114" y="96" width="110" height="18" rx="4" fill="#1E1830"/>
+              <text x="122" y="107" font-family="Arial" font-size="6" fill="#C8A8F0">Ter 11 · 09:00</text><text x="216" y="107" font-family="Arial" font-size="6" fill="#7C3FC8" text-anchor="end">Livre</text>
+              <rect x="114" y="120" width="52" height="14" rx="7" fill="#7C3FC8"/><text x="140" y="129" font-family="Arial" font-size="6" fill="#FFF" text-anchor="middle">Agendar →</text>
+            </svg>
+          </div>
+          <div class="ui-screen-wrap">
+            <div class="ui-screen-label">Feed — Comunidade</div>
+            <svg width="240" height="160" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" fill="#0D0B14"/>
+              <rect width="240" height="22" fill="#13101D"/>
+              <text x="10" y="15" font-family="Georgia,serif" font-size="8" fill="#C8A8F0" font-weight="600">Comunidade</text>
+              <rect x="186" y="8" width="46" height="12" rx="6" fill="#7C3FC8"/><text x="209" y="16" font-family="Arial" font-size="6" fill="#FFF" text-anchor="middle">+ Postar</text>
+              <rect x="8" y="28" width="224" height="54" rx="6" fill="#1A1530" stroke="#3D2C6E" stroke-width="0.5"/>
+              <circle cx="22" cy="42" r="8" fill="#7C3FC8" fill-opacity="0.3"/>
+              <text x="22" y="46" font-family="Arial" font-size="8" fill="#C8A8F0" text-anchor="middle">M</text>
+              <text x="35" y="40" font-family="Arial" font-size="7" fill="#EDE6FF" font-weight="600">Marina Souza</text>
+              <text x="35" y="50" font-family="Arial" font-size="6" fill="#555">Psicóloga · há 2h</text>
+              <text x="14" y="63" font-family="Arial" font-size="6" fill="#AAA">"Completei 1 ano de atendimentos pela Aster. Transformador!"</text>
+              <text x="14" y="75" font-family="Arial" font-size="6" fill="#555">♡ 34   💬 8   ↗ compartilhar</text>
+              <rect x="8" y="88" width="224" height="44" rx="6" fill="#1A1530" stroke="#3D2C6E" stroke-width="0.5"/>
+              <circle cx="22" cy="102" r="8" fill="#3FC8A8" fill-opacity="0.3"/>
+              <text x="22" y="106" font-family="Arial" font-size="8" fill="#3FC8A8" text-anchor="middle">L</text>
+              <text x="35" y="100" font-family="Arial" font-size="7" fill="#EDE6FF" font-weight="600">Luísa Ferreira</text>
+              <text x="35" y="110" font-family="Arial" font-size="6" fill="#555">Nutricionista · há 5h</text>
+              <text x="14" y="122" font-family="Arial" font-size="6" fill="#AAA">Retiro de autoconhecimento — vagas abertas para julho!</text>
+              <text x="14" y="130" font-family="Arial" font-size="6" fill="#555">♡ 21   💬 3</text>
+              <rect x="8" y="138" width="72" height="14" rx="7" fill="#7C3FC8" fill-opacity="0.15" stroke="#7C3FC8" stroke-width="0.5"/>
+              <text x="44" y="147" font-family="Arial" font-size="6" fill="#C8A8F0" text-anchor="middle">Próx. evento →</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-flow">
+        <div class="flow-step"><div class="flow-dot">D1</div><div class="flow-label">Desk Research</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">D2</div><div class="flow-label">Pesquisa<br>c/ usuários</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">D3</div><div class="flow-label">Benchmarking<br>& SWOT</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">D4</div><div class="flow-label">Personas<br>& Jornada</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">D5</div><div class="flow-label">Protótipo<br>Figma</div></div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-card">
+          <div class="insight-num">R$150tri</div>
+          <div class="insight-label">Tamanho do mercado da economia feminina global — oportunidade mapeada na pesquisa de mercado</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">85%</div>
+          <div class="insight-label">Das mulheres preferem encontros presenciais e experiências imersivas — insight direto das entrevistas</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">4°</div>
+          <div class="insight-label">Posição do Brasil no mercado global de bem-estar — dado que embasou a viabilidade do produto</div>
+        </div>
+      </div>
+
+      <div class="case-sections">
+        <div class="case-section">
+          <h4>O problema real</h4>
+          <p>A Aster tinha engajamento genuíno no Instagram, mas zero infraestrutura para escalar. Sem um produto próprio, não havia como gerar renda para as profissionais da rede nem dar acesso a mulheres fora do alcance do algoritmo.</p>
+        </div>
+        <div class="case-section">
+          <h4>O que eu fiz</h4>
+          <ul>
+            <li>Pesquisa de mercado com dados do setor de bem-estar e economia feminina</li>
+            <li>Entrevistas com o público-alvo para validar necessidades reais</li>
+            <li>Análise SWOT e benchmarking com 5 concorrentes diretos</li>
+            <li>Definição das funcionalidades prioritárias do MVP</li>
+            <li>Prototipação de alta fidelidade no Figma</li>
+          </ul>
+        </div>
+        <div class="case-section">
+          <h4>Principal insight</h4>
+          <p>Maternidade e feminismo — temas que pareciam óbvios para o público feminino — não eram prioridade. As usuárias queriam autoconhecimento, saúde mental e conexões reais. Essa descoberta mudou completamente o escopo do produto.</p>
+        </div>
+        <div class="case-section">
+          <h4>Decisões de design</h4>
+          <ul>
+            <li>MVP focado em comunidade + agenda de eventos presenciais</li>
+            <li>Monetização via profissionais autônomas (psicólogas, nutricionistas)</li>
+            <li>Identidade visual que preserva o calor do Instagram original</li>
+            <li>Grupos de WhatsApp integrados como canal de baixo atrito</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-cta">
+        <a href="https://www.figma.com/board/zVWqq5LBiVXTis4DC5Bf9J/Projeto-Aster--Pesquisa-" target="_blank">Ver pesquisa completa no Figma →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 2: DOEI -->
+  <div class="case-card">
+    <div class="case-header">
+      <div>
+        <div class="case-tag">Projeto 02 · Social Impact & Fintech</div>
+        <h3>DOEI — Plataforma de doações transparentes para ONGs</h3>
+        <p class="case-desc">Em um cenário onde 84% dos brasileiros já fizeram alguma doação, o principal freio não é a falta de vontade — é a falta de confiança. As pessoas não sabem para onde o dinheiro vai. O DOEI nasceu para resolver exatamente isso.</p>
+        <div class="case-pills">
+          <span class="pill">Double Diamond</span>
+          <span class="pill">73 respostas quanti</span>
+          <span class="pill">Entrevistas com ONGs</span>
+          <span class="pill">Benchmarking</span>
+          <span class="pill">Figma</span>
+        </div>
+      </div>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <div class="case-meta-label">Tipo</div>
+          <div class="case-meta-value">App mobile</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Pesquisa</div>
+          <div class="case-meta-value">73 usuários + 9 ONGs</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Contexto</div>
+          <div class="case-meta-value">Enchentes RS 2024</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-body">
+
+      <!-- ── UI DOEI ── -->
+      <div class="case-ui-preview">
+        <div class="case-ui-bar">
+          <div class="browser-dots"><div class="browser-dot r"></div><div class="browser-dot y"></div><div class="browser-dot g"></div></div>
+          <span>Telas do produto — App DOEI</span>
+        </div>
+        <div class="ui-screens">
+          <div class="ui-screen-wrap">
+            <div class="ui-screen-label">Home — Descoberta</div>
+            <svg width="240" height="160" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" fill="#0A1628"/>
+              <rect width="240" height="22" fill="#071020"/>
+              <text x="10" y="15" font-family="Georgia,serif" font-size="9" fill="#4CA6FF" font-weight="600">DOEI</text>
+              <text x="186" y="15" font-family="Arial" font-size="6" fill="#888">Olá, Lucas 👋</text>
+              <text x="10" y="36" font-family="Arial" font-size="7" fill="#4CA6FF" font-weight="700" letter-spacing="1">CAUSAS EM DESTAQUE</text>
+              <!-- Card ONG 1 -->
+              <rect x="8" y="42" width="108" height="64" rx="6" fill="#0D2040" stroke="#1E3A6E" stroke-width="0.5"/>
+              <rect x="8" y="42" width="108" height="22" rx="6" fill="#1A3A6E"/>
+              <rect x="8" y="54" width="108" height="10" fill="#1A3A6E"/>
+              <text x="62" y="56" font-family="Arial" font-size="6" fill="#4CA6FF" text-anchor="middle" font-weight="700">RS Reconstrução</text>
+              <text x="14" y="75" font-family="Arial" font-size="5.5" fill="#AAC4E0">Famílias desalojadas pelas</text>
+              <text x="14" y="83" font-family="Arial" font-size="5.5" fill="#AAC4E0">enchentes de 2024</text>
+              <!-- progress bar -->
+              <rect x="14" y="90" width="94" height="4" rx="2" fill="#1E3A6E"/>
+              <rect x="14" y="90" width="67" height="4" rx="2" fill="#4CA6FF"/>
+              <text x="14" y="101" font-family="Arial" font-size="5" fill="#888">R$ 67k de R$ 100k</text>
+              <!-- Card ONG 2 -->
+              <rect x="124" y="42" width="108" height="64" rx="6" fill="#0D2040" stroke="#1E3A6E" stroke-width="0.5"/>
+              <rect x="124" y="42" width="108" height="22" rx="6" fill="#1A3A6E"/>
+              <rect x="124" y="54" width="108" height="10" fill="#1A3A6E"/>
+              <text x="178" y="56" font-family="Arial" font-size="6" fill="#4CA6FF" text-anchor="middle" font-weight="700">Instituto Raízes</text>
+              <text x="130" y="75" font-family="Arial" font-size="5.5" fill="#AAC4E0">Educação para crianças</text>
+              <text x="130" y="83" font-family="Arial" font-size="5.5" fill="#AAC4E0">em vulnerabilidade</text>
+              <rect x="130" y="90" width="94" height="4" rx="2" fill="#1E3A6E"/>
+              <rect x="130" y="90" width="42" height="4" rx="2" fill="#4CA6FF"/>
+              <text x="130" y="101" font-family="Arial" font-size="5" fill="#888">R$ 42k de R$ 100k</text>
+              <!-- Verified badge -->
+              <text x="14" y="118" font-family="Arial" font-size="7" fill="#4CA6FF" font-weight="700">✓ ONGs verificadas pelo DOEI</text>
+              <text x="14" y="129" font-family="Arial" font-size="5.5" fill="#555">Auditoria financeira trimestral · Relatórios em tempo real</text>
+              <rect x="8" y="138" width="80" height="14" rx="7" fill="#4CA6FF" fill-opacity="0.12" stroke="#4CA6FF" stroke-width="0.5"/>
+              <text x="48" y="147" font-family="Arial" font-size="5.5" fill="#4CA6FF" text-anchor="middle">Ver todas as ONGs →</text>
+            </svg>
+          </div>
+          <div class="ui-screen-wrap">
+            <div class="ui-screen-label">ONG — Transparência</div>
+            <svg width="240" height="160" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" fill="#0A1628"/>
+              <rect width="240" height="22" fill="#071020"/>
+              <text x="10" y="15" font-family="Arial" font-size="7" fill="#4CA6FF">← Voltar</text>
+              <text x="120" y="15" font-family="Georgia,serif" font-size="8" fill="#EAF2FF" text-anchor="middle">RS Reconstrução</text>
+              <!-- Badge verificado -->
+              <rect x="72" y="24" width="96" height="14" rx="7" fill="#4CA6FF" fill-opacity="0.1" stroke="#4CA6FF" stroke-width="0.5"/>
+              <text x="120" y="33" font-family="Arial" font-size="5.5" fill="#4CA6FF" text-anchor="middle">✓ ONG VERIFICADA DOEI</text>
+              <!-- Stats -->
+              <rect x="8" y="44" width="68" height="34" rx="4" fill="#0D2040" stroke="#1E3A6E" stroke-width="0.5"/>
+              <text x="42" y="58" font-family="Arial" font-size="14" fill="#4CA6FF" text-anchor="middle" font-weight="700">67k</text>
+              <text x="42" y="70" font-family="Arial" font-size="5" fill="#888" text-anchor="middle">Arrecadado</text>
+              <rect x="86" y="44" width="68" height="34" rx="4" fill="#0D2040" stroke="#1E3A6E" stroke-width="0.5"/>
+              <text x="120" y="58" font-family="Arial" font-size="14" fill="#4CA6FF" text-anchor="middle" font-weight="700">243</text>
+              <text x="120" y="70" font-family="Arial" font-size="5" fill="#888" text-anchor="middle">Doadores</text>
+              <rect x="164" y="44" width="68" height="34" rx="4" fill="#0D2040" stroke="#1E3A6E" stroke-width="0.5"/>
+              <text x="198" y="58" font-family="Arial" font-size="14" fill="#4CA6FF" text-anchor="middle" font-weight="700">98%</text>
+              <text x="198" y="70" font-family="Arial" font-size="5" fill="#888" text-anchor="middle">Reputação</text>
+              <!-- Where money goes -->
+              <text x="10" y="92" font-family="Arial" font-size="6" fill="#4CA6FF" font-weight="700" letter-spacing="0.5">ONDE SEU DINHEIRO VAI</text>
+              <rect x="8" y="98" width="224" height="8" rx="2" fill="#1E3A6E"/>
+              <rect x="8" y="98" width="144" height="8" rx="2" fill="#4CA6FF"/>
+              <text x="10" y="115" font-family="Arial" font-size="5.5" fill="#888">64% Kits emergência   21% Moradia   15% Alimentação</text>
+              <!-- Últimas movimentações -->
+              <text x="10" y="128" font-family="Arial" font-size="6" fill="#4CA6FF" font-weight="700" letter-spacing="0.5">ÚLTIMO RELATÓRIO</text>
+              <text x="10" y="139" font-family="Arial" font-size="5.5" fill="#AAC4E0">15/05 · 120 kits entregues em Canoas e São Leopoldo</text>
+              <text x="10" y="149" font-family="Arial" font-size="5.5" fill="#555">Auditoria: Instituto Brasileiro de Governança · Jun 2024</text>
+            </svg>
+          </div>
+          <div class="ui-screen-wrap">
+            <div class="ui-screen-label">Doação — Confirmação</div>
+            <svg width="240" height="160" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" fill="#0A1628"/>
+              <rect width="240" height="22" fill="#071020"/>
+              <text x="10" y="15" font-family="Arial" font-size="7" fill="#4CA6FF">← Voltar</text>
+              <text x="120" y="15" font-family="Georgia,serif" font-size="8" fill="#EAF2FF" text-anchor="middle">Confirmar doação</text>
+              <!-- Resumo -->
+              <rect x="8" y="28" width="224" height="54" rx="6" fill="#0D2040" stroke="#1E3A6E" stroke-width="0.5"/>
+              <text x="120" y="43" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Você está doando para</text>
+              <text x="120" y="56" font-family="Georgia,serif" font-size="10" fill="#EAF2FF" text-anchor="middle" font-weight="600">RS Reconstrução</text>
+              <text x="120" y="72" font-family="Arial" font-size="20" fill="#4CA6FF" text-anchor="middle" font-weight="700">R$ 50,00</text>
+              <!-- Valores rápidos -->
+              <rect x="8" y="88" width="52" height="18" rx="4" fill="#0D2040" stroke="#1E3A6E" stroke-width="0.5"/>
+              <text x="34" y="100" font-family="Arial" font-size="7" fill="#888" text-anchor="middle">R$20</text>
+              <rect x="66" y="88" width="52" height="18" rx="4" fill="#4CA6FF" fill-opacity="0.15" stroke="#4CA6FF" stroke-width="1"/>
+              <text x="92" y="100" font-family="Arial" font-size="7" fill="#4CA6FF" text-anchor="middle">R$50</text>
+              <rect x="124" y="88" width="52" height="18" rx="4" fill="#0D2040" stroke="#1E3A6E" stroke-width="0.5"/>
+              <text x="150" y="100" font-family="Arial" font-size="7" fill="#888" text-anchor="middle">R$100</text>
+              <rect x="182" y="88" width="50" height="18" rx="4" fill="#0D2040" stroke="#1E3A6E" stroke-width="0.5"/>
+              <text x="207" y="100" font-family="Arial" font-size="7" fill="#888" text-anchor="middle">Outro</text>
+              <!-- Recorrente -->
+              <rect x="8" y="114" width="224" height="18" rx="4" fill="#0D2040" stroke="#1E3A6E" stroke-width="0.5"/>
+              <text x="14" y="125" font-family="Arial" font-size="6" fill="#888">Tornar doação mensal</text>
+              <rect x="200" y="118" width="24" height="10" rx="5" fill="#4CA6FF"/>
+              <circle cx="220" cy="123" r="4" fill="#FFF"/>
+              <!-- CTA -->
+              <rect x="8" y="138" width="224" height="16" rx="8" fill="#4CA6FF"/>
+              <text x="120" y="149" font-family="Arial" font-size="7" fill="#0A1628" text-anchor="middle" font-weight="700">Confirmar e Doar →</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-flow">
+        <div class="flow-step"><div class="flow-dot">D1</div><div class="flow-label">Contexto<br>de doação BR</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">D2</div><div class="flow-label">Pesquisa<br>73 usuários</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">D3</div><div class="flow-label">Pesquisa<br>9 ONGs</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">D4</div><div class="flow-label">Entrevistas<br>aprofundadas</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">D5</div><div class="flow-label">Protótipo<br>Figma</div></div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-card">
+          <div class="insight-num">84%</div>
+          <div class="insight-label">Dos brasileiros fizeram alguma doação em 2022 — a cultura já existe, o produto precisa facilitar</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">73</div>
+          <div class="insight-label">Respostas coletadas em 1 semana de formulário ativo — pesquisa quantitativa com público real</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">9</div>
+          <div class="insight-label">ONGs entrevistadas diretamente — lado raramente ouvido no design de plataformas de doação</div>
+        </div>
+      </div>
+
+      <div class="case-sections">
+        <div class="case-section">
+          <h4>O problema real</h4>
+          <p>O usuário quer doar, mas não sabe se pode confiar. As enchentes do RS em 2024 escancararam o problema: dezenas de "vaquinhas" suspeitas, ONGs sem presença digital, e nenhuma plataforma que respondesse de forma clara à pergunta: para onde vai o meu dinheiro?</p>
+        </div>
+        <div class="case-section">
+          <h4>O que eu fiz</h4>
+          <ul>
+            <li>Pesquisa sobre o cenário de doações no Brasil pré e pós-pandemia</li>
+            <li>Formulário quantitativo com 73 respostas de potenciais doadores</li>
+            <li>Formulário específico enviado para 9 ONGs — lado raramente ouvido</li>
+            <li>3 entrevistas aprofundadas para entender motivações e barreiras</li>
+            <li>Benchmarking com plataformas como iFood (modelo de intermediação)</li>
+          </ul>
+        </div>
+        <div class="case-section">
+          <h4>Principal insight</h4>
+          <p>As ONGs não tinham problema com engajamento da causa — tinham problema com credibilidade digital. Sites desatualizados e ausência nas redes sociais faziam parecer que eram golpe. A solução de design precisava resolver o problema das ONGs para conseguir resolver o problema dos doadores.</p>
+        </div>
+        <div class="case-section">
+          <h4>Decisões de design</h4>
+          <ul>
+            <li>Verificação digital de ONGs como feature central, não como rodapé</li>
+            <li>Rastreabilidade da doação: o usuário sabe exatamente para onde foi</li>
+            <li>Onboarding simples — reduzir o atrito burocrático foi prioridade do MVP</li>
+            <li>Inspiração no modelo iFood: confiança pelo intermediário conhecido</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-cta">
+        <a href="#contato">Quer ver o protótipo completo? Me chama →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 3: ITAÚ CX -->
+  <div class="case-card">
+    <div class="case-header">
+      <div>
+        <div class="case-tag">Projeto 03 · CX · Fintech</div>
+        <h3>Case CX Itaú — Jornada de Onboarding e Validação de Experiência</h3>
+        <p class="case-desc">O desafio era redesenhar o onboarding de uma plataforma do Itaú para que novos usuários chegassem ao primeiro valor sem confusão, sem abandono e sem depender do suporte. O projeto envolveu mapeamento completo da jornada, hipóteses testáveis e um plano de métricas concreto para medir cada decisão.</p>
+        <div class="case-pills">
+          <span class="pill">Mapeamento de jornada</span>
+          <span class="pill">Hipóteses e validação</span>
+          <span class="pill">Teste A/B</span>
+          <span class="pill">NPS · CES · CSAT</span>
+          <span class="pill">Chatbot UX</span>
+          <span class="pill">Plano de métricas</span>
+        </div>
+      </div>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <div class="case-meta-label">Empresa</div>
+          <div class="case-meta-value">Itaú Unibanco</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Tipo</div>
+          <div class="case-meta-value">CX · Onboarding</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Métricas</div>
+          <div class="case-meta-value">NPS, CES, CSAT, Teste A/B</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-body">
+
+      <!-- ── UI ITAÚ CX ── -->
+      <div class="case-ui-preview">
+        <div class="case-ui-bar">
+          <div class="browser-dots"><div class="browser-dot r"></div><div class="browser-dot y"></div><div class="browser-dot g"></div></div>
+          <span>Telas conceituais — Onboarding Itaú redesenhado</span>
+        </div>
+        <div class="ui-screens">
+          <div class="ui-screen-wrap">
+            <div class="ui-screen-label">Antes — Painel genérico</div>
+            <svg width="240" height="160" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" fill="#F5F5F5"/>
+              <rect width="240" height="22" fill="#003F88"/>
+              <text x="14" y="15" font-family="Arial" font-size="9" fill="#FFF" font-weight="700">Itaú</text>
+              <text x="80" y="15" font-family="Arial" font-size="6" fill="#CCE0FF">Início</text><text x="120" y="15" font-family="Arial" font-size="6" fill="#CCE0FF">Plataforma</text><text x="170" y="15" font-family="Arial" font-size="6" fill="#CCE0FF">Suporte</text>
+              <text x="14" y="38" font-family="Arial" font-size="7" fill="#333" font-weight="700">Bem-vindo à plataforma</text>
+              <text x="14" y="50" font-family="Arial" font-size="6" fill="#888">Complete seu cadastro para continuar.</text>
+              <!-- Stepper genérico -->
+              <rect x="14" y="58" width="212" height="8" rx="2" fill="#E0E0E0"/>
+              <rect x="14" y="58" width="70" height="8" rx="2" fill="#FF6200"/>
+              <text x="14" y="75" font-family="Arial" font-size="5.5" fill="#888">Etapa 1 de 5</text>
+              <!-- Step items sem contexto -->
+              <rect x="14" y="82" width="212" height="16" rx="3" fill="#FFF" stroke="#E0E0E0" stroke-width="0.5"/>
+              <text x="24" y="93" font-family="Arial" font-size="6" fill="#555">● Etapa 1: Dados pessoais</text>
+              <rect x="14" y="102" width="212" height="16" rx="3" fill="#FFF" stroke="#E0E0E0" stroke-width="0.5"/>
+              <text x="24" y="113" font-family="Arial" font-size="6" fill="#CCC">○ Etapa 2: Configurações</text>
+              <rect x="14" y="122" width="212" height="16" rx="3" fill="#FFF" stroke="#E0E0E0" stroke-width="0.5"/>
+              <text x="24" y="133" font-family="Arial" font-size="6" fill="#CCC">○ Etapa 3: Preferências</text>
+              <!-- Label problema -->
+              <rect x="14" y="144" width="136" height="12" rx="6" fill="#FFEBEB" stroke="#FF4444" stroke-width="0.5"/>
+              <text x="82" y="152" font-family="Arial" font-size="5.5" fill="#CC2222" text-anchor="middle">⚠ Sem contexto de valor</text>
+            </svg>
+          </div>
+          <div class="ui-screen-wrap">
+            <div class="ui-screen-label">Depois — Painel com benefício</div>
+            <svg width="240" height="160" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" fill="#F0F4FF"/>
+              <rect width="240" height="22" fill="#003F88"/>
+              <text x="14" y="15" font-family="Arial" font-size="9" fill="#FFF" font-weight="700">Itaú</text>
+              <text x="80" y="15" font-family="Arial" font-size="6" fill="#CCE0FF">Início</text><text x="120" y="15" font-family="Arial" font-size="6" fill="#CCE0FF">Plataforma</text>
+              <text x="14" y="38" font-family="Arial" font-size="7" fill="#003F88" font-weight="700">Olá, Lucas! 3 passos para seu 1° dashboard</text>
+              <!-- Stepper com benefício -->
+              <rect x="14" y="46" width="212" height="8" rx="2" fill="#C8DCF5"/>
+              <rect x="14" y="46" width="70" height="8" rx="2" fill="#FF6200"/>
+              <text x="14" y="63" font-family="Arial" font-size="5.5" fill="#003F88">Concluir etapa 1 → você criará seu 1° relatório</text>
+              <!-- Steps com contexto -->
+              <rect x="14" y="70" width="212" height="22" rx="3" fill="#FFF" stroke="#FF6200" stroke-width="1"/>
+              <text x="24" y="82" font-family="Arial" font-size="6" fill="#003F88" font-weight="700">✓ Dados pessoais</text>
+              <text x="24" y="90" font-family="Arial" font-size="5.5" fill="#FF6200">Próximo: crie seu 1° relatório →</text>
+              <rect x="14" y="96" width="212" height="22" rx="3" fill="#F5F8FF" stroke="#C8DCF5" stroke-width="0.5"/>
+              <text x="24" y="108" font-family="Arial" font-size="6" fill="#555">○ Conectar dados</text>
+              <text x="24" y="116" font-family="Arial" font-size="5.5" fill="#888">Libera dashboards em tempo real</text>
+              <rect x="14" y="122" width="212" height="22" rx="3" fill="#F5F8FF" stroke="#C8DCF5" stroke-width="0.5"/>
+              <text x="24" y="134" font-family="Arial" font-size="6" fill="#555">○ Configurar alertas</text>
+              <text x="24" y="142" font-family="Arial" font-size="5.5" fill="#888">Notificações inteligentes ativas</text>
+              <!-- Label solução -->
+              <rect x="14" y="148" width="116" height="10" rx="5" fill="#E6F0E6" stroke="#4CAF50" stroke-width="0.5"/>
+              <text x="72" y="155" font-family="Arial" font-size="5" fill="#2E7D32" text-anchor="middle">✓ Benefício explícito em cada etapa</text>
+            </svg>
+          </div>
+          <div class="ui-screen-wrap">
+            <div class="ui-screen-label">Chatbot — Contextual</div>
+            <svg width="240" height="160" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="240" height="160" fill="#F0F4FF"/>
+              <rect width="240" height="22" fill="#003F88"/>
+              <text x="14" y="15" font-family="Arial" font-size="9" fill="#FFF" font-weight="700">Itaú · Assistente</text>
+              <circle cx="220" cy="11" r="5" fill="#4CAF50"/>
+              <text x="14" y="38" font-family="Arial" font-size="6" fill="#888">Página atual: Conectar dados de relatório</text>
+              <!-- Chat bubble bot -->
+              <rect x="8" y="44" width="180" height="36" rx="8" rx="8" fill="#003F88"/>
+              <text x="16" y="57" font-family="Arial" font-size="6" fill="#FFF">Olá! Vejo que você está conectando</text>
+              <text x="16" y="67" font-family="Arial" font-size="6" fill="#FFF">sua fonte de dados. Posso ajudar a</text>
+              <text x="16" y="77" font-family="Arial" font-size="6" fill="#AAC4FF">configurar para relatórios de vendas?</text>
+              <!-- Chat bubble user -->
+              <rect x="56" y="86" width="176" height="22" rx="8" fill="#FF6200"/>
+              <text x="64" y="99" font-family="Arial" font-size="6" fill="#FFF">Sim, quero conectar meu CRM</text>
+              <!-- Bot response -->
+              <rect x="8" y="114" width="200" height="30" rx="8" fill="#003F88"/>
+              <text x="16" y="126" font-family="Arial" font-size="6" fill="#FFF">Perfeito! Para o Salesforce, clique em</text>
+              <text x="16" y="136" font-family="Arial" font-size="6" fill="#AAC4FF">"Integrar CRM" no painel direito →</text>
+              <!-- Input -->
+              <rect x="8" y="148" width="200" height="10" rx="5" fill="#FFF" stroke="#C8DCF5" stroke-width="0.5"/>
+              <text x="14" y="155" font-family="Arial" font-size="5.5" fill="#AAA">Pergunte algo sobre esta página...</text>
+              <rect x="214" y="146" width="18" height="14" rx="4" fill="#FF6200"/>
+              <text x="223" y="155" font-family="Arial" font-size="8" fill="#FFF" text-anchor="middle">→</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="process-flow">
+        <div class="flow-step"><div class="flow-dot">J1</div><div class="flow-label">Mapeamento<br>da jornada</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">J2</div><div class="flow-label">Fricções<br>e emoções</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">J3</div><div class="flow-label">Hipóteses<br>de solução</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">J4</div><div class="flow-label">Validação<br>NPS · CES</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">J5</div><div class="flow-label">Plano de<br>métricas</div></div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-card">
+          <div class="insight-num">8</div>
+          <div class="insight-label">Etapas do onboarding mapeadas com ação, objetivo, fricção e emoção do usuário em cada ponto</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">2</div>
+          <div class="insight-label">Hipóteses testáveis definidas — Teste A/B no painel de progresso e CES no chatbot contextual</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">3</div>
+          <div class="insight-label">Planos de ação com métricas claras: templates práticos, live onboarding e chatbot contextual</div>
+        </div>
+      </div>
+
+      <div class="case-sections">
+        <div class="case-section">
+          <h4>O problema real</h4>
+          <p>Novos usuários chegavam na plataforma sem saber o que fazer primeiro. O onboarding era genérico, o chatbot não entendia o contexto da página e o painel de progresso não comunicava valor — só etapas. O resultado: abandono precoce e sobrecarga no suporte.</p>
+        </div>
+        <div class="case-section">
+          <h4>O que eu fiz</h4>
+          <ul>
+            <li>Mapeei 8 etapas da jornada com ação, objetivo, fricção provável e emoção esperada</li>
+            <li>Formulei 2 hipóteses testáveis com métodos de validação (NPS, CES, Teste A/B)</li>
+            <li>Desenhei 3 planos de ação: galeria de templates, live onboarding quinzenal e chatbot contextual</li>
+            <li>Defini como medir cada ação: CSAT pós-webinar, uso de templates e redução de chamados</li>
+          </ul>
+        </div>
+        <div class="case-section">
+          <h4>Hipótese central</h4>
+          <p>Quando o painel de progresso mostra o benefício real de cada etapa — não apenas "etapa 2 de 5", mas "ao concluir isso, você criará seu primeiro dashboard" — o usuário ganha motivação e propósito. Validação: Teste A/B entre os dois formatos.</p>
+        </div>
+        <div class="case-section">
+          <h4>Decisões de design</h4>
+          <ul>
+            <li>Chatbot treinado por contexto de página e perfil do usuário — não respostas genéricas</li>
+            <li>Painel de progresso com benefício explícito em cada etapa, não só contador</li>
+            <li>Webinars quinzenais com CSAT ao final para medir percepção de valor</li>
+            <li>Templates segmentados por persona: Engenheiro, Analista e Cientista</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-cta">
+        <a href="mailto:gbmr08@gmail.com">Ver apresentação completa do case →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 4: LANDING PAGE IA -->
+  <div class="case-card">
+    <div class="case-header">
+      <div>
+        <div class="case-tag">Projeto 04 · UI Design · IA Generativa</div>
+        <h3>Landing Page gerada com IA — do prompt ao protótipo no Figma</h3>
+        <p class="case-desc">Explorei como a inteligência artificial pode entrar nas etapas iniciais do processo de design. Usei o Nano Banana para gerar uma imagem conceitual a partir de um prompt cuidadosamente construído, e transformei essa imagem em uma landing page funcional no Figma — aplicando grid, hierarquia visual, tipografia e contraste para equilibrar estética e usabilidade.</p>
+        <div class="case-pills">
+          <span class="pill">IA Generativa</span>
+          <span class="pill">Nano Banana</span>
+          <span class="pill">Figma</span>
+          <span class="pill">Grid System</span>
+          <span class="pill">Hierarquia visual</span>
+          <span class="pill">UI Design</span>
+        </div>
+      </div>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <div class="case-meta-label">Tipo</div>
+          <div class="case-meta-value">Projeto pessoal</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Plataforma</div>
+          <div class="case-meta-value">Web responsivo</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Ferramenta IA</div>
+          <div class="case-meta-value">Nano Banana</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="process-flow">
+        <div class="flow-step"><div class="flow-dot">P1</div><div class="flow-label">Prompt<br>de conceito</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">P2</div><div class="flow-label">Análise<br>visual da IA</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">P3</div><div class="flow-label">Paleta e<br>composição</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">P4</div><div class="flow-label">Grid e<br>hierarquia</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="flow-dot">P5</div><div class="flow-label">Protótipo<br>Figma</div></div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-card">
+          <div class="insight-num">1</div>
+          <div class="insight-label">Prompt cirúrgico gerou a imagem base — a linguagem de instrução é uma habilidade de design</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">UI</div>
+          <div class="insight-label">Paleta, tipografia, grid e contraste extraídos da imagem gerada e aplicados com critério no Figma</div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-num">IA+</div>
+          <div class="insight-label">IA como parceira de ideação — não substitui o processo, acelera a fase de inspiração visual</div>
+        </div>
+      </div>
+
+      <div class="case-sections">
+        <div class="case-section">
+          <h4>O problema explorado</h4>
+          <p>Como usar IA generativa de forma intencional no processo de design — não como atalho, mas como ferramenta de ideação? O experimento buscou entender onde a IA agrega valor sem substituir o raciocínio de design.</p>
+        </div>
+        <div class="case-section">
+          <h4>O que eu fiz</h4>
+          <ul>
+            <li>Escrevi um prompt detalhado pensando em composição, luz, atmosfera e foco visual</li>
+            <li>Analisei a imagem gerada: paleta dominante, ponto focal, sensação transmitida</li>
+            <li>Traduzi esses elementos visuais em decisões de design no Figma</li>
+            <li>Apliquei grid system, hierarquia tipográfica e contraste para garantir usabilidade</li>
+          </ul>
+        </div>
+        <div class="case-section">
+          <h4>Principal aprendizado</h4>
+          <p>Escrever um bom prompt é um exercício de UX: você precisa saber o que quer comunicar, para quem, e em que contexto. A habilidade de extrair intenção e traduzir em linguagem precisa é a mesma que usamos para escrever briefings e definir problemas de design.</p>
+        </div>
+        <div class="case-section">
+          <h4>Resultado visual</h4>
+          <ul>
+            <li>Landing page com identidade visual única nascida da colaboração humano + IA</li>
+            <li>Navegação clara com hierarquia visual definida (Home, Jornadas, Espaços, Histórias)</li>
+            <li>Paleta orgânica extraída da imagem: tons de verde, preto e branco com CTA destacado</li>
+            <li>Projeto Crypto Case Study desenvolvido no Figma com abordagem semelhante</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-cta">
+        <a href="https://www.figma.com/design/4DyJrNJHznxzuoSUWSAyYX/Crypto---Case-Study?node-id=551-2646" target="_blank">Ver Crypto Case Study no Figma →</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+  <div class="section-tag">Competências</div>
+  <h2>O que eu sei fazer e como.</h2>
+  <p class="subtitle">Construído na prática — cada habilidade foi aplicada em pelo menos um dos projetos acima.</p>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Pesquisa & Discovery</div>
+      <div class="skill-item"><span class="skill-name">Pesquisa qualitativa</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Pesquisa quantitativa</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Desk Research</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Entrevistas com usuários</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Benchmarking</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Síntese & Estratégia</div>
+      <div class="skill-item"><span class="skill-name">Double Diamond</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Personas</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Análise SWOT</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Mapeamento de jornada</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">NPS · CES · CSAT · Teste A/B</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Design & Prototipação</div>
+      <div class="skill-item"><span class="skill-name">Figma</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">FigJam</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Wireframes</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Prototipação Hi-Fi</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">IA Generativa (Nano Banana)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="section-tag">Contato</div>
+  <h2>Pronto para contribuir<br>com <em>times reais.</em></h2>
+  <p>Se você procura um júnior que entende de processo, faz pesquisa de verdade e traz um olhar de quem já viveu o outro lado do produto — vamos conversar.</p>
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/guilherme-brito-rodrigues/" target="_blank" class="contact-link primary">Abrir LinkedIn →</a>
+    <a href="mailto:gbmr08@gmail.com" class="contact-link">Enviar e-mail</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Guilherme Rodrigues · UX Designer · São Paulo</span>
+  <span>Feito com processo. 2025.</span>
+</footer>
+
+</body>
+</html>
